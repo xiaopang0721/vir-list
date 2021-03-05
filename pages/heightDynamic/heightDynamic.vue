@@ -3,12 +3,12 @@
 		<!-- 负责撑开 ul 的高度 -->
 		<li class="height-dynamic__scroll-runway" ref="scrollRunway" :style="`transform: translate(0, ${scrollRunwayEnd}px)`"></li>
 		<!-- 下拉占位符 -->
-		<placeholder class="height-dynamic__placeholder" v-for="(item, index) in topPlaceholders" :key="-index - 1" :style="`transform: translate(0, ${cachedScrollY[firstAttachedItem] - ESTIMATED_HEIGHT * (index + 1)}px)`" />
+		<!-- <placeholder class="height-dynamic__placeholder" v-for="(item, index) in topPlaceholders" :key="-index - 1" :style="`transform: translate(0, ${cachedScrollY[firstAttachedItem] - ESTIMATED_HEIGHT * (index + 1)}px)`" /> -->
 		<item class="height-dynamic__item" v-for="item in visibleData" ref="items" :data="item" :fixed-height="false" :key="item.username + item.phone"
 		 :index="item.index" :style="`transform: translate(0, ${cachedScrollY[item.index] || item.index * ESTIMATED_HEIGHT}px)`"
 		 @size-change="handleSizeChange" />
 		<!-- 上拉占位符 -->
-		<placeholder class="height-dynamic__placeholder" v-for="(item, index) in bottomPlaceholders" :key="index + 1" :style="`transform: translate(0, ${cachedScrollY[lastAttachedItem - 1] + cachedHeight[lastAttachedItem - 1] + ESTIMATED_HEIGHT * (index + 1)}px)`" />
+		<!-- <placeholder class="height-dynamic__placeholder" v-for="(item, index) in bottomPlaceholders" :key="index + 1" :style="`transform: translate(0, ${cachedScrollY[lastAttachedItem - 1] + cachedHeight[lastAttachedItem - 1] + ESTIMATED_HEIGHT * (index + 1)}px)`" /> -->
 	</ul>
 </template>
 
@@ -73,7 +73,7 @@
 
 				this.updateAnchorItem(delta);
 				this.updateVisibleData();
-				this.updatePlaceholder(delta >= 0);
+				// this.updatePlaceholder(delta >= 0);
 				this.handleLoadMore();
 			},
 			async updateAnchorItem(delta) {

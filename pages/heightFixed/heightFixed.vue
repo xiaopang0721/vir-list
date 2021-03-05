@@ -3,11 +3,11 @@
 		<!-- 负责撑开 ul 的高度 -->
 		<li class="height-fixed__scroll-runway" ref="scrollRunway" :style="`transform: translate(0, ${scrollRunwayEnd}px)`"></li>
 		<!-- 下拉占位符 -->
-		<placeholder class="height-fixed__placeholder" v-for="(item, index) in topPlaceholders" :key="-index - 1" :style="`transform: translate(0, ${FIXED_HEIGHT * (firstAttachedItem - index - 1)}px)`" />
+		<!-- <placeholder class="height-fixed__placeholder" v-for="(item, index) in topPlaceholders" :key="-index - 1" :style="`transform: translate(0, ${FIXED_HEIGHT * (firstAttachedItem - index - 1)}px)`" /> -->
 		<item class="height-fixed__item" v-for="item in visibleData" :data="item" :index="item.index" :key="item.username + item.phone"
 		 :style="`transform: translate(0, ${item.scrollY}px)`" />
 		<!-- 上拉占位符 -->
-		<placeholder class="height-fixed__placeholder" v-for="(item, index) in bottomPlaceholders" :key="index + 1" :style="`transform: translate(0, ${FIXED_HEIGHT * (lastAttachedItem + index + 1)}px)`" />
+		<!-- <placeholder class="height-fixed__placeholder" v-for="(item, index) in bottomPlaceholders" :key="index + 1" :style="`transform: translate(0, ${FIXED_HEIGHT * (lastAttachedItem + index + 1)}px)`" /> -->
 	</ul>
 </template>
 
@@ -79,7 +79,7 @@
 				this.lastAttachedItem = Math.min(this.firstAttachedItem + VISIBLE_COUNT + BUFFER_SIZE * 2, this.listData.length);
 				this.visibleData = this.listData.slice(this.firstAttachedItem, this.lastAttachedItem);
 
-				this.updatePlaceholder(isPositive);
+				// this.updatePlaceholder(isPositive);
 				this.handleLoadMore();
 			},
 			updateAnchorItem() {
